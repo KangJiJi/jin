@@ -1,0 +1,1 @@
+export const prefix = "https://kangjiji.github.io/jin";
