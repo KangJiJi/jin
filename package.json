@@ -1,0 +1,24 @@
+{
+  "name": "jin",
+  "version": "1.0.0",
+  "homepage": "https://kangjiji.github.io/jin",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "predeploy": "npm run-script build",
+    "deploy": "gh-pages -d deploy",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "next": "14.1.3",
+    "react": "^18",
+    "react-dom": "^18"
+  },
+  "devDependencies": {
+    "eslint": "^8",
+    "eslint-config-next": "14.1.3",
+    "gh-pages": "^6.1.1"
+  }
+}
