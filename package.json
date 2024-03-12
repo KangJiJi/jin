@@ -1,23 +1,42 @@
 {
   "name": "jin",
-  "version": "1.0.0",
-  "homepage": "https://kangjiji.github.io/jin",
+  "version": "0.1.0",
   "private": true,
-  "scripts": {
-    "dev": "next dev",
-    "deploy": "next build && next export && touch out/.nojekyll && git add -f out/ && git commit -m 'deploy to gh-pages' && git subtree push --prefix out origin gh-pages",
-    "build": "next build && next export",
-    "start": "next start",
-    "lint": "next lint"
-  },
+  "homepage": "https://kangjiji.github.io/jin",
   "dependencies": {
-    "next": "14.1.3",
-    "react": "^18",
-    "react-dom": "^18"
+    "@testing-library/jest-dom": "^5.17.0",
+    "@testing-library/react": "^13.4.0",
+    "@testing-library/user-event": "^13.5.0",
+    "gh-pages": "^6.1.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-scripts": "5.0.1",
+    "web-vitals": "^2.1.4"
   },
-  "devDependencies": {
-    "eslint": "^8",
-    "eslint-config-next": "14.1.3",
-    "gh-pages": "^6.1.1"
+  "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
   }
 }
