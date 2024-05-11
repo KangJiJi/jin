@@ -4,16 +4,17 @@ import { useState } from 'react';
 import Image from 'next/image';
 import IconVs from '/public/icons/vs.png';
 import Profile from '/components/profile/Profile';
-
-import ProfileKeke from '/public/profile/keke.png';
+import profileInfoList from '/components/data/profileInfoList';
 
 export default function ChoiceOne() {
+  const profileInfoListCopy = profileInfoList.map((v) => v);
+
   const [topButtonClicked, setTopButtonClicked] = useState(false);
   const [bottomButtonClicked, setBottomButtonClicked] = useState(false);
 
   const handleSelect = (buttonClickedSetter, selectedProfile) => {
     buttonClickedSetter(true);
-    console.log('clicked!');
+    console.log(profileInfoListCopy);
   };
 
   return (
@@ -23,18 +24,14 @@ export default function ChoiceOne() {
       </div>
       <div className="relative w-full h-[calc(100%-3rem)]">
         <div
-          className={`w-full bg-blue-500 flex justify-center items-center h-1/2`}
+          className={`w-full bg-blue-500 flex justify-center h-1/2 ${
+            topButtonClicked ? 'items-end' : 'items-center'
+          }`}
         >
           <div
-            className={`${
-              bottomButtonClicked
-                ? 'transition duration-1000 ease-in-out opacity-0'
-                : ''
-            } ${
-              topButtonClicked
-                ? 'transition duration-1000 ease-in-out translate-y-full'
-                : ''
-            }`}
+            className={`transition duration-1000 ease-in-out ${
+              bottomButtonClicked ? 'opacity-0' : ''
+            } ${topButtonClicked ? 'translate-y-1/2' : ''}`}
           >
             <Profile
               name="zzzzzz"
@@ -45,22 +42,18 @@ export default function ChoiceOne() {
         </div>
 
         <div
-          className={`w-full bg-green-500 flex justify-center items-center h-1/2`}
+          className={`w-full bg-green-500 flex justify-center h-1/2 ${
+            bottomButtonClicked ? 'items-start' : 'items-center'
+          }`}
         >
           <div
-            className={`${
-              topButtonClicked
-                ? 'transition duration-1000 ease-in-out opacity-0'
-                : ''
-            } ${
-              bottomButtonClicked
-                ? 'transition duration-1000 ease-in-out -translate-y-full'
-                : ''
-            }`}
+            className={`transition duration-1000 ease-in-out ${
+              topButtonClicked ? 'opacity-0' : ''
+            } ${bottomButtonClicked ? '-translate-y-1/2' : ''}`}
           >
             <Profile
-              image={ProfileKeke}
-              name="zzzz"
+              image={profileInfoListCopy[0].image}
+              name={profileInfoListCopy[0].name}
               onClick={() => handleSelect(setBottomButtonClicked)}
               buttonVisibility={bottomButtonClicked}
             />
