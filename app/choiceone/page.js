@@ -1,26 +1,92 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Image from 'next/image';
-import IconVs from '/public/icons/vs.png';
-import Profile from '/components/profile/Profile';
-import profileInfoList from '/components/data/profileInfoList';
+import IconVs from '@/public/icons/vs.png';
+import Profile from '@/components/profile';
+import LoadingSpinner from '@/components/loadingSpinner';
+import profileInfoList from '@/data/profileInfoList';
+import useProfileData from '@/hooks/profileInfo';
+import { createTwoChunkList } from '@/utils/chunk';
+import { sleep } from '@/utils/sleep';
 
 export default function ChoiceOne() {
-  const profileInfoListCopy = profileInfoList.map((v) => v);
+  const [chunkProfileInfoList, setChunkProfileInfoList] = useState([]);
+  const [selectedProfileInfoList, setSelectedProfileInfoList] = useState([]);
+
+  const [loadingState, setLoadingState] = useState(false);
+  const [chunkIndex, setChunkIndex] = useState(0);
 
   const [topButtonClicked, setTopButtonClicked] = useState(false);
   const [bottomButtonClicked, setBottomButtonClicked] = useState(false);
 
-  const handleSelect = (buttonClickedSetter, selectedProfile) => {
+  useEffect(() => {
+    setChunkProfileInfoList(createTwoChunkList(profileInfoList));
+  }, []);
+
+  useEffect(() => {
+    if (chunkProfileInfoList.length > 0) {
+      setChunkIndex(0);
+      setLoadingState(true);
+    }
+  }, [chunkProfileInfoList]);
+
+  useEffect(() => {
+    if (selectedProfileInfoList.length === 0) return;
+
+    if (selectedProfileInfoList.length === chunkProfileInfoList.length) {
+      if (chunkProfileInfoList.length === 1) {
+        // TODO
+        console.log('result 페이지로 이동');
+        return;
+      }
+
+      console.log(selectedProfileInfoList);
+      setChunkProfileInfoList(createTwoChunkList(selectedProfileInfoList));
+      setSelectedProfileInfoList([]);
+      setChunkIndex(0);
+      return;
+    }
+
+    setChunkIndex(chunkIndex + 1);
+  }, [selectedProfileInfoList]);
+
+  const handleSelect = async (buttonClickedSetter, selectedProfileInfo) => {
+    if (topButtonClicked || bottomButtonClicked) return;
     buttonClickedSetter(true);
-    console.log(profileInfoListCopy);
+
+    await sleep(2000);
+
+    setSelectedProfileInfoList([
+      ...selectedProfileInfoList,
+      selectedProfileInfo,
+    ]);
+
+    setTopButtonClicked(false);
+    setBottomButtonClicked(false);
   };
+
+  if (loadingState == false) {
+    return (
+      <main className="min-w-dvw w-screen min-h-dvh h-screen flex justify-center items-center">
+        <LoadingSpinner />
+      </main>
+    );
+  }
 
   return (
     <main className="min-w-dvw w-screen min-h-dvh h-screen font-sans">
       <div className="w-full h-12 flex justify-center items-center">
-        <div className="text-2xl font-bold">Title</div>
+        <div className="text-2xl font-bold">
+          {chunkProfileInfoList.length === 1 ? (
+            <>!👀!👀! 결승 !👀!👀!</>
+          ) : (
+            <>
+              🚩 {chunkProfileInfoList.length * 2} 강 ({chunkIndex + 1} /
+              {chunkProfileInfoList.length}) 🚩
+            </>
+          )}
+        </div>
       </div>
       <div className="relative w-full h-[calc(100%-3rem)]">
         <div
@@ -33,11 +99,17 @@ export default function ChoiceOne() {
               bottomButtonClicked ? 'opacity-0' : ''
             } ${topButtonClicked ? 'translate-y-1/2' : ''}`}
           >
-            <Profile
-              name="zzzzzz"
-              onClick={() => handleSelect(setTopButtonClicked)}
-              buttonVisibility={topButtonClicked}
-            />
+            {chunkProfileInfoList.length > 0 ? (
+              <Profile
+                profileInfo={chunkProfileInfoList[chunkIndex][0]}
+                onClick={(selectedProfileInfo) =>
+                  handleSelect(setTopButtonClicked, selectedProfileInfo)
+                }
+                buttonVisibility={topButtonClicked}
+              />
+            ) : (
+              <></>
+            )}
           </div>
         </div>
 
@@ -51,19 +123,24 @@ export default function ChoiceOne() {
               topButtonClicked ? 'opacity-0' : ''
             } ${bottomButtonClicked ? '-translate-y-1/2' : ''}`}
           >
-            <Profile
-              image={profileInfoListCopy[0].image}
-              name={profileInfoListCopy[0].name}
-              onClick={() => handleSelect(setBottomButtonClicked)}
-              buttonVisibility={bottomButtonClicked}
-            />
+            {chunkProfileInfoList.length > 0 ? (
+              <Profile
+                profileInfo={chunkProfileInfoList[chunkIndex][1]}
+                onClick={(selectedProfileInfo) =>
+                  handleSelect(setBottomButtonClicked, selectedProfileInfo)
+                }
+                buttonVisibility={bottomButtonClicked}
+              />
+            ) : (
+              <></>
+            )}
           </div>
         </div>
 
         {topButtonClicked == bottomButtonClicked && (
           <>
             <div className="absolute top-1/2 border-4 border-black w-full z-999"></div>
-            <div className="absolute top-1/2 left-1/2 w-20 h-20 -ml-10 -mt-10 z-1000">
+            <div className="absolute top-1/2 left-1/2 w-14 h-14 -ml-7 -mt-7 z-1000">
               <Image className="w-full" src={IconVs} alt="vs" priority />
             </div>
           </>

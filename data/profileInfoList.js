@@ -1,148 +1,164 @@
-import profileKeke from '/public/profile/keke.png';
+import profileKeke from '@/public/profile/keke.png';
 
 const profileInfoList = [
   {
-    name: 'keke',
+    idx: 1,
+    name: '01번',
     image: profileKeke,
   },
   {
-    name: 'keke',
+    idx: 2,
+    name: '02번',
     image: profileKeke,
   },
   {
-    name: 'keke',
+    idx: 3,
+    name: '03번',
     image: profileKeke,
   },
   {
-    name: 'keke',
+    idx: 4,
+    name: '04번',
     image: profileKeke,
   },
   {
-    name: 'keke',
+    idx: 5,
+    name: '05번',
     image: profileKeke,
   },
   {
-    name: 'keke',
+    idx: 6,
+    name: '06번',
     image: profileKeke,
   },
   {
-    name: 'keke',
+    idx: 7,
+    name: '07번',
     image: profileKeke,
   },
   {
-    name: 'keke',
+    idx: 8,
+    name: '08번',
     image: profileKeke,
   },
   {
-    name: 'keke',
+    idx: 9,
+    name: '09번',
     image: profileKeke,
   },
   {
-    name: 'keke',
+    idx: 10,
+    name: '10번',
     image: profileKeke,
   },
   {
-    name: 'keke',
+    idx: 11,
+    name: '11번',
     image: profileKeke,
   },
   {
-    name: 'keke',
+    idx: 12,
+    name: '12번',
     image: profileKeke,
   },
   {
-    name: 'keke',
+    idx: 13,
+    name: '13번',
     image: profileKeke,
   },
   {
-    name: 'keke',
+    idx: 14,
+    name: '14번',
     image: profileKeke,
   },
   {
-    name: 'keke',
+    idx: 15,
+    name: '15번',
     image: profileKeke,
   },
   {
-    name: 'keke',
+    idx: 16,
+    name: '16번',
     image: profileKeke,
   },
   {
-    name: 'keke',
+    idx: 17,
+    name: '17번',
     image: profileKeke,
   },
   {
-    name: 'keke',
+    idx: 18,
+    name: '18번',
     image: profileKeke,
   },
   {
-    name: 'keke',
+    idx: 19,
+    name: '19번',
     image: profileKeke,
   },
   {
-    name: 'keke',
+    idx: 20,
+    name: '20번',
     image: profileKeke,
   },
   {
-    name: 'keke',
+    idx: 21,
+    name: '21번',
     image: profileKeke,
   },
   {
-    name: 'keke',
+    idx: 22,
+    name: '22번',
     image: profileKeke,
   },
   {
-    name: 'keke',
+    idx: 23,
+    name: '23번',
     image: profileKeke,
   },
   {
-    name: 'keke',
+    idx: 24,
+    name: '24번',
     image: profileKeke,
   },
   {
-    name: 'keke',
+    idx: 25,
+    name: '25번',
     image: profileKeke,
   },
   {
-    name: 'keke',
+    idx: 26,
+    name: '26번',
     image: profileKeke,
   },
   {
-    name: 'keke',
+    idx: 27,
+    name: '27번',
     image: profileKeke,
   },
   {
-    name: 'keke',
+    idx: 28,
+    name: '28번',
     image: profileKeke,
   },
   {
-    name: 'keke',
+    idx: 29,
+    name: '29번',
     image: profileKeke,
   },
   {
-    name: 'keke',
+    idx: 30,
+    name: '30번',
     image: profileKeke,
   },
   {
-    name: 'keke',
+    idx: 31,
+    name: '31번',
     image: profileKeke,
   },
   {
-    name: 'keke',
-    image: profileKeke,
-  },
-  {
-    name: 'keke',
-    image: profileKeke,
-  },
-  {
-    name: 'keke',
-    image: profileKeke,
-  },
-  {
-    name: 'keke',
-    image: profileKeke,
-  },
-  {
-    name: 'keke',
+    idx: 32,
+    name: '32번',
     image: profileKeke,
   },
 ];
