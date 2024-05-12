@@ -5,9 +5,9 @@ export default function Profile({ profileInfo, buttonVisibility, onClick }) {
   return (
     <div className="w-52 aspect-[1.618/1]">
       <div className="w-full mb-2 flex justify-center items-center">
-        <div className="w-44">
+        <div className="max-w-44 max-h-44">
           <Image
-            className="w-full"
+            className="w-full max-h-44"
             src={profileInfo.image}
             alt="profile image"
             priority={true}

@@ -53,7 +53,7 @@ export default function ChoiceOne() {
     if (topButtonClicked || bottomButtonClicked) return;
     buttonClickedSetter(true);
 
-    await sleep(200);
+    await sleep(2000);
 
     setSelectedProfileInfoList([
       ...selectedProfileInfoList,
