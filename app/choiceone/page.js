@@ -1,12 +1,12 @@
 'use client';
 
+import { redirect } from 'next/navigation';
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import IconVs from '@/public/icons/vs.png';
 import Profile from '@/components/profile';
 import LoadingSpinner from '@/components/loadingSpinner';
 import profileInfoList from '@/data/profileInfoList';
-import useProfileData from '@/hooks/profileInfo';
 import { createTwoChunkList } from '@/utils/chunk';
 import { sleep } from '@/utils/sleep';
 
@@ -36,12 +36,10 @@ export default function ChoiceOne() {
 
     if (selectedProfileInfoList.length === chunkProfileInfoList.length) {
       if (chunkProfileInfoList.length === 1) {
-        // TODO
-        console.log('result 페이지로 이동');
-        return;
+        console.log(selectedProfileInfoList[0].idx);
+        redirect(`/result/${selectedProfileInfoList[0].idx}`);
       }
 
-      console.log(selectedProfileInfoList);
       setChunkProfileInfoList(createTwoChunkList(selectedProfileInfoList));
       setSelectedProfileInfoList([]);
       setChunkIndex(0);
@@ -55,7 +53,7 @@ export default function ChoiceOne() {
     if (topButtonClicked || bottomButtonClicked) return;
     buttonClickedSetter(true);
 
-    await sleep(2000);
+    await sleep(200);
 
     setSelectedProfileInfoList([
       ...selectedProfileInfoList,
