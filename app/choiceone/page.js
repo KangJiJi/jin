@@ -3,7 +3,7 @@
 import { redirect } from 'next/navigation';
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
-import IconVs from '@/public/icons/vs.png';
+import IconVs from '@/public/assets/vs.png';
 import Profile from '@/components/profile';
 import LoadingSpinner from '@/components/loadingSpinner';
 import profileInfoList from '@/data/profileInfoList';
