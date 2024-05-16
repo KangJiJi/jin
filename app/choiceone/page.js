@@ -102,7 +102,7 @@ export default function ChoiceOne() {
             <>!👀!👀! 결승 !👀!👀!</>
           ) : (
             <>
-              🚩 {chunkProfileInfoList.length * 2} 강 ({chunkIndex + 1} /
+              🚩 {chunkProfileInfoList.length * 2} 강 ({chunkIndex + 1} /{' '}
               {chunkProfileInfoList.length}) 🚩
             </>
           )}
