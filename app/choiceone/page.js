@@ -68,14 +68,25 @@ export default function ChoiceOne() {
       <main className="min-w-dvw w-screen min-h-dvh h-screen flex justify-center items-center">
         <LoadingSpinner />
         <>
-          {profileInfoList.map((profileInfo) => (
-            <Image
-              className="hidden"
-              key={profileInfo.image}
-              src={profileInfo.image}
-              priority
-            />
-          ))}
+          {/* preloading */}
+          {chunkProfileInfoList.length != 0 ? (
+            <>
+              <Image
+                className="hidden"
+                src={chunkProfileInfoList[0][0].image}
+                alt="preload image"
+                priority
+              />
+              <Image
+                className="hidden"
+                src={chunkProfileInfoList[0][1].image}
+                alt="preload image"
+                priority
+              />
+            </>
+          ) : (
+            <></>
+          )}
         </>
       </main>
     );
@@ -83,6 +94,27 @@ export default function ChoiceOne() {
 
   return (
     <main className="min-w-dvw w-screen min-h-dvh h-screen font-sans">
+      <>
+        {/* preloading */}
+        {chunkIndex != chunkProfileInfoList.length - 1 ? (
+          <>
+            <Image
+              className="hidden"
+              src={chunkProfileInfoList[chunkIndex + 1][0].image}
+              alt="preload image"
+              priority
+            />
+            <Image
+              className="hidden"
+              src={chunkProfileInfoList[chunkIndex + 1][1].image}
+              alt="preload image"
+              priority
+            />
+          </>
+        ) : (
+          <></>
+        )}
+      </>
       <div className="w-full h-12 flex justify-center items-center">
         <div className="text-2xl font-bold">
           {chunkProfileInfoList.length === 1 ? (
