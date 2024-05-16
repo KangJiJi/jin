@@ -36,7 +36,6 @@ export default function ChoiceOne() {
 
     if (selectedProfileInfoList.length === chunkProfileInfoList.length) {
       if (chunkProfileInfoList.length === 1) {
-        console.log(selectedProfileInfoList[0].idx);
         redirect(`/result/${selectedProfileInfoList[0].idx}`);
       }
 

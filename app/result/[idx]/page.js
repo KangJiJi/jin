@@ -3,6 +3,12 @@ import Link from 'next/link';
 import Button from '@mui/material/Button';
 import profileInfoList from '@/data/profileInfoList';
 
+export function generateStaticParams() {
+  return profileInfoList.map((profileInfo) => ({
+    idx: `${profileInfo.idx}`,
+  }));
+}
+
 export default function Result(props) {
   const profileInfo = profileInfoList.find(
     ({ idx }) => idx == props.params.idx
