@@ -52,7 +52,10 @@ export default function ChoiceOne() {
 
     await sleep(2000);
 
-    setChunkIndex(chunkIndex + 1);
+    if (chunkIndex + 1 != chunkProfileInfoList.length) {
+      setChunkIndex(chunkIndex + 1);
+    }
+
     setSelectedProfileInfoList([
       ...selectedProfileInfoList,
       selectedProfileInfo,
