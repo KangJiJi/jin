@@ -44,16 +44,15 @@ export default function ChoiceOne() {
       setChunkIndex(0);
       return;
     }
-
-    setChunkIndex(chunkIndex + 1);
   }, [selectedProfileInfoList]);
 
   const handleSelect = async (buttonClickedSetter, selectedProfileInfo) => {
     if (topButtonClicked || bottomButtonClicked) return;
     buttonClickedSetter(true);
 
-    await sleep(1500);
+    await sleep(2000);
 
+    setChunkIndex(chunkIndex + 1);
     setSelectedProfileInfoList([
       ...selectedProfileInfoList,
       selectedProfileInfo,
@@ -174,11 +173,13 @@ export default function ChoiceOne() {
               className="w-full max-h-36"
               src={chunkProfileInfoList[chunkIndex + 1][0].image}
               alt="preload image"
+              priority
             />
             <Image
               className="w-full max-h-36"
               src={chunkProfileInfoList[chunkIndex + 1][1].image}
               alt="preload image"
+              priority
             />
           </div>
         ) : (
