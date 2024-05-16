@@ -69,7 +69,12 @@ export default function ChoiceOne() {
         <LoadingSpinner />
         <>
           {profileInfoList.map((profileInfo) => (
-            <Image className="hidden" src={profileInfo.image} priority />
+            <Image
+              className="hidden"
+              key={profileInfo.image}
+              src={profileInfo.image}
+              priority
+            />
           ))}
         </>
       </main>
