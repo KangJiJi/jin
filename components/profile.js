@@ -10,7 +10,7 @@ export default function Profile({ profileInfo, buttonVisibility, onClick }) {
             className="w-full max-h-36"
             src={profileInfo.image}
             alt="profile image"
-            priority={true}
+            priority
           />
         </div>
       </div>

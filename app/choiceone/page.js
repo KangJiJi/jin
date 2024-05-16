@@ -52,7 +52,7 @@ export default function ChoiceOne() {
     if (topButtonClicked || bottomButtonClicked) return;
     buttonClickedSetter(true);
 
-    await sleep(2000);
+    await sleep(1500);
 
     setSelectedProfileInfoList([
       ...selectedProfileInfoList,
@@ -67,6 +67,11 @@ export default function ChoiceOne() {
     return (
       <main className="min-w-dvw w-screen min-h-dvh h-screen flex justify-center items-center">
         <LoadingSpinner />
+        <>
+          {profileInfoList.map((profileInfo) => (
+            <Image className="hidden" src={profileInfo.image} priority />
+          ))}
+        </>
       </main>
     );
   }
