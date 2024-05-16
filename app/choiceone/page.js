@@ -70,20 +70,20 @@ export default function ChoiceOne() {
         <>
           {/* preloading */}
           {chunkProfileInfoList.length != 0 ? (
-            <>
+            <div className="hidden">
               <Image
-                className="hidden"
+                className="w-full max-h-36"
                 src={chunkProfileInfoList[0][0].image}
                 alt="preload image"
                 priority
               />
               <Image
-                className="hidden"
+                className="w-full max-h-36"
                 src={chunkProfileInfoList[0][1].image}
                 alt="preload image"
                 priority
               />
-            </>
+            </div>
           ) : (
             <></>
           )}
@@ -169,18 +169,18 @@ export default function ChoiceOne() {
         {/* preloading */}
         {profileInfoList.length / 2 === chunkProfileInfoList.length &&
         chunkIndex != chunkProfileInfoList.length - 1 ? (
-          <>
+          <div className="hidden">
             <Image
-              className="hidden"
+              className="w-full max-h-36"
               src={chunkProfileInfoList[chunkIndex + 1][0].image}
               alt="preload image"
             />
             <Image
-              className="hidden"
+              className="w-full max-h-36"
               src={chunkProfileInfoList[chunkIndex + 1][1].image}
               alt="preload image"
             />
-          </>
+          </div>
         ) : (
           <></>
         )}
